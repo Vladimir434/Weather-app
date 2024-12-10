@@ -5,3 +5,7 @@
   justify-content: center;
   row-gap: 22px;
 }
+.setting_cnt p {
+  font-size: 14px;
+  font-weight: 600;
+}

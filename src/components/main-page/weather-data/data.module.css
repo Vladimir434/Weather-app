@@ -1,0 +1,23 @@
+.block{
+  display: flex;
+  align-items: center;
+}
+.block_wrapper{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 42px;
+}
+.block_wrapper h3 {
+  margin-left: 28px;
+}
+.cnt_params{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block_wrapper{
+  width: 92%;
+  height: auto;
+}

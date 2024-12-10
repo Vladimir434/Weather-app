@@ -10,6 +10,12 @@ import CloudyImg from "../../assets/CloudyImg.svg";
 import ThunderstormImg from "../../assets/ThunderstormImg.svg";
 import s from "./main-page.module.css";
 import Setting from "./custom settings/settings";
+import Degree from "../../assets/degree.svg";
+import Speed from "../../assets/speed.svg";
+import Humidity from "../../assets/humidity.svg";
+import Sun from "../../assets/Sun.svg";
+import Data from "./weather-data/data";
+
 const WeatherPage = () => {
   const [weathetData, setWeathetData] = useState("");
   const [city, setCity] = useState("New York");
@@ -34,7 +40,7 @@ const WeatherPage = () => {
       return ThunderstormImg;
     } else if (temperature >= 0 && temperature <= 10) {
       return CloudyImg;
-    } else if (temperature > 10 && temperature <= 20) {
+    } else if (temperature >= 10 && temperature <= 20) {
       return SunnyImg;
     } else if (temperature > 20) {
       return RainImg;
@@ -66,11 +72,22 @@ const WeatherPage = () => {
         </div>
       </div>
       <div className={s.container_navigation}>
-        <div className={s.settings}><Setting/></div>
-        <div className={s.images}></div>
+        <div className={s.settings}>
+          <Setting />
+        </div>
+        <div className={s.images}>
+          <h1 className={s.title_image}>Activities in your area</h1>
+        </div>
         <div className={s.parameter}>
-          <label htmlFor="">New York</label>
-          <input type="text" onChange={(e) => setCity(e.target.value)} />
+          <div className={s.block__input}>
+            <label>{weathetData?.name}</label>
+            <input type="text" onChange={(e) => setCity(e.target.value)} />
+          </div>
+          <h2 className={s.title__parametr}>AIR CONDITIONS</h2>
+          <Data img={Degree} name={"Real Feel"} param={weathetData?.main?.temp_max} />
+          <Data img={Speed} name={"Wind"} param={weathetData?.wind?.speed} />
+          <Data img={Humidity} name={"Chance of rain"} param={weathetData?.main?.humidity} />
+          <Data img={Sun} name={"UV Index"} param={weathetData?.main?.temp_min} />
         </div>
       </div>
     </>
